@@ -11,11 +11,13 @@ let calc = {
     saved: '',
     symbol: '',
     first: true,
+    onOperator: false,
 }
 
 //click on number
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
+        calc.onOperator = false;
         calc.current += number.textContent;
         display.textContent = calc.current;
     })
@@ -30,6 +32,10 @@ decimal.addEventListener('click', (e) => {
 //click on operator
 operators.forEach((operator) => {
     operator.addEventListener('click', (e) => {
+        if(calc.onOperator) {
+            return;
+        }
+        calc.onOperator = true;
         if(calc.first){
             calc.symbol = e.target.textContent;
             calc.saved = calc.current;
@@ -68,7 +74,7 @@ ac.addEventListener('click', () => {
 
 //click on back
 back.addEventListener('click', () => {
-    if(Number(calc.current) === 'number') {
+    if(typeof(Number(display.textContent)) === 'number') {
         const shortCurrent = calc.current.slice(0,calc.current.length-1);
         calc.current = shortCurrent;
         display.textContent = calc.current;
