@@ -32,11 +32,11 @@
     display: flex;
 }
 
-.num, .ac, .operator, #decimal {
+.num, .operator, #decimal, .equal, .back {
     flex: 1 1 0;
     margin: 2px;
 }
 
-#num0 {
+#num0, .ac {
     flex: 2.29 1 0;
 }
