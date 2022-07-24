@@ -33,6 +33,8 @@ decimal.addEventListener('click', (e) => {
 operators.forEach((operator) => {
     operator.addEventListener('click', (e) => {
         if(calc.onOperator) {
+            calc.symbol = e.target.textContent;
+            display.textContent = e.target.textContent;
             return;
         }
         calc.onOperator = true;
@@ -61,6 +63,7 @@ equal.addEventListener('click', () => {
     calc.current = '';
     calc.saved = '';
     calc.symbol = '';
+    calc.onOperator = false;
 })
 
 //click on ac
@@ -69,7 +72,8 @@ ac.addEventListener('click', () => {
     calc.current = '';
     calc.saved = '';
     calc.symbol = '';
-    display.textContent = '';
+    calc.onOperator = false;
+    display.textContent = '0000';
 })
 
 //click on back
@@ -90,22 +94,22 @@ const performEqual = function() {
     switch(calc.symbol) {
         case '+':
             calc.saved = Number(calc.saved) + Number(calc.current);
-            display.textContent = calc.saved;
+            display.textContent = Number(calc.saved).toFixed(3);
             calc.current = '';
             break;
         case '-':
             calc.saved = Number(calc.saved) - Number(calc.current);
-            display.textContent = calc.saved;
+            display.textContent = Number(calc.saved).toFixed(3);
             calc.current = '';
             break;
         case 'x':
             calc.saved = Number(calc.saved) * Number(calc.current);
-            display.textContent = calc.saved;
+            display.textContent = Number(calc.saved).toFixed(3);
             calc.current = '';
             break;
         case '/':
             calc.saved = Number(calc.saved) / Number(calc.current);
-            display.textContent = calc.saved;
+            display.textContent = Number(calc.saved).toFixed(3);
             calc.current = '';
             break;
     }
