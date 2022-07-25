@@ -129,7 +129,7 @@ buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         const button = e.target;
         button.addEventListener('transitionend', () => {
-            button.classList.toggle('click');
+            button.classList.remove('click');
             console.log('working');
         });
         button.classList.toggle('click');
