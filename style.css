@@ -1,43 +1,76 @@
+body {
+    background-image: url(background.webp);
+    display: flex;
+    justify-content: center;
+}
+
 .body {
     display: flex;
     flex-direction: column;
+    gap:1em;
+    padding: 15px;
+    margin-top: 3em;
     
-    width:30vw;
-    height:50vh;
+    width:400px;
+    height:500px;
     
     border: 5px solid black;
+    background-color: #616161;
 }
 
 .screen {
     display: flex;
     flex:1 1 0;
     justify-content: end;
+    align-items: center;
     
-    border: 2px solid grey;
+    border: 5px solid grey;
+    border-radius: 0.5em;
+    background-color: #B2D3C2;
 }
 
 .display {
-    font-size: large;
-    font-family: 'Orbitron';
+    font-size: 50px;
+    font-family: Arial Narrow, sans-serif;
+    margin: 0px;
+    padding: 0px;
+
 }
 
 .keyBoard {
     display: flex;
     flex-direction: column;
     flex:4 1 0;
+    gap: 0.2em
 }
 
 .row {
     flex: 1 1 0;
     display: flex;
+    gap: 0.2em;
 }
 
 .num, .operator, #decimal, .equal, .back {
     flex: 1 1 0;
-    margin: 2px;
+    margin: 0px;
 }
 
 #num0, .ac {
-    flex: 2.29 1 0;
-    margin: 2px;
+    flex: 2.25 1 0;
+    margin: 0px;
+}
+
+.orange {
+    background-color: #ec8100;
+}
+
+button {
+    border: 2px solid black;
+    border-radius: 0.5em;
+    font-size: 30px;
+    transition: all .07s ease;
+}
+
+.click {
+    background-color: darkgrey;
 }

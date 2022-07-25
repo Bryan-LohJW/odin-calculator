@@ -12,11 +12,20 @@ let calc = {
     symbol: '',
     first: true,
     onOperator: false,
+    onEqual: false,
 }
 
 //click on number
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
+        if(calc.onEqual) {
+            calc.current = '';
+            calc.saved = '';
+            calc.symbol = '';
+            calc.first = true;
+            calc.onOperator = false;
+            calc.onEqual = false;
+        }
         calc.onOperator = false;
         calc.current += number.textContent;
         display.textContent = calc.current;
@@ -38,13 +47,13 @@ operators.forEach((operator) => {
             return;
         }
         calc.onOperator = true;
+        calc.onEqual = false;
         if(calc.first){
             calc.symbol = e.target.textContent;
             calc.saved = calc.current;
             calc.current = '';
             display.textContent = e.target.textContent;
             calc.first = false;
-            console.log(e.target.textContent);
         } else {
         performEqual();
         calc.symbol = e.target.textContent;
@@ -59,11 +68,9 @@ equal.addEventListener('click', () => {
         return;
     }
     performEqual();
-    calc.first = true;
-    calc.current = '';
-    calc.saved = '';
     calc.symbol = '';
     calc.onOperator = false;
+    calc.onEqual = true;
 })
 
 //click on ac
@@ -114,5 +121,19 @@ const performEqual = function() {
             break;
     }
     calc.first = false;
-
 }
+
+//adding animation
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        const button = e.target;
+        button.addEventListener('transitionend', () => {
+            button.classList.toggle('click');
+            console.log('working');
+        });
+        button.classList.toggle('click');
+        console.log(button);
+
+    })
+});
